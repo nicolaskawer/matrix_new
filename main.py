@@ -70,7 +70,7 @@ def gauss_method(matrix):
                 print(mul)
                 """print the multiply to a file"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
-    return matrix
+    return mul
 
 
 def multiply_two_matrix(matrix1, matrix2):
@@ -99,6 +99,7 @@ def print_hi(name):
 if __name__ == '__main__':
     matrix = []
     answer_matrix = []
+    result = [0, 0, 0]
     size = int(input("Enter size of the matrix n >> (nXn): "))
     for i in range(size):
         helper = []
@@ -108,6 +109,10 @@ if __name__ == '__main__':
         matrix.append(helper)
         num = float(input(f'result num in row {i + 1}='))
         answer_matrix.append(num)
-print(gauss_method(matrix))
+    multiply_elementary_matrix = gauss_method(matrix)
+    for r in range(len(multiply_elementary_matrix)):
+        for c in range(len(multiply_elementary_matrix)):
+            result[r] += multiply_elementary_matrix[r][c] * answer_matrix[c]
+    print(result)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
