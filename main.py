@@ -19,7 +19,6 @@ def make_elementary_matrix(pivot, num1, row, col):
     temp_elementary = make_unit_matrix()
     temp_elementary[row][col] = -1 * (num1 / pivot)
     return temp_elementary
-"""hii hadar how u doing"""
 
 def exchange(row, row_replace):
     unit_matrix = temp_elementary = make_unit_matrix()
@@ -32,7 +31,6 @@ def gauss_method(matrix):
     """open a file"""
     for r in range(size):
         maxi = abs(matrix[r][r])
-        """1111"""
         flag = 0
         for c in range(size):
             if abs(matrix[r][c]) > maxi:
@@ -42,6 +40,7 @@ def gauss_method(matrix):
         if flag != 0:
             temp_matrix = exchange(r, c_max)
             mul = multiply_two_matrix(temp_matrix, mul)
+            print(mul)
             """print the multiply to a file"""
             matrix = multiply_two_matrix(temp_matrix, matrix)
     for r in range(size):
@@ -50,6 +49,7 @@ def gauss_method(matrix):
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
                 """print the multiply to a file"""
+                print(mul)
                 matrix = multiply_two_matrix(temp_matrix, matrix)
             else:
                 temp_matrix = make_unit_matrix()
@@ -58,15 +58,18 @@ def gauss_method(matrix):
                 else:
                     temp_matrix[r][r] = 1 / matrix[r][r]
                 mul = multiply_two_matrix(temp_matrix, mul)
+                print(mul)
                 """print the multiply to a file"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
 
     for r in range(size-1, -1, -1):
         for c in range(r, -1, -1):
-            temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
-            mul = multiply_two_matrix(temp_matrix, mul)
-            """print the multiply to a file"""
-            matrix = multiply_two_matrix(temp_matrix, matrix)
+            if r != c:
+                temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
+                mul = multiply_two_matrix(temp_matrix, mul)
+                print(mul)
+                """print the multiply to a file"""
+                matrix = multiply_two_matrix(temp_matrix, matrix)
     return matrix
 
 
