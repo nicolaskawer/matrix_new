@@ -99,7 +99,7 @@ def print_hi(name):
 if __name__ == '__main__':
     matrix = []
     answer_matrix = []
-    result = [0, 0, 0]
+    final_result = []
     size = int(input("Enter size of the matrix n >> (nXn): "))
     for i in range(size):
         helper = []
@@ -110,9 +110,11 @@ if __name__ == '__main__':
         num = float(input(f'result num in row {i + 1}='))
         answer_matrix.append(num)
     multiply_elementary_matrix = gauss_method(matrix)
+    for i in range(size):
+        final_result.append(0)
     for r in range(len(multiply_elementary_matrix)):
         for c in range(len(multiply_elementary_matrix)):
-            result[r] += multiply_elementary_matrix[r][c] * answer_matrix[c]
-    print(result)
+            final_result[r] += multiply_elementary_matrix[r][c] * answer_matrix[c]
+    print(final_result) #צריך להדפיס לאא בצורת מטריצה אלא בצורת משתנים X,Y,Z
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
