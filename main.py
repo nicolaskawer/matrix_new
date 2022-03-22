@@ -6,6 +6,7 @@ def make_unit_matrix():
     unit_matrix = []
     for i in range(0, size):
         temp = []
+
         for j in range(0, size):
             if i == j:
                 temp.append(1)
@@ -13,7 +14,6 @@ def make_unit_matrix():
                 temp.append(0)
         unit_matrix.append(temp)
     return unit_matrix
-"""הדר חסרת סבלנות!!!!"""
 
 def make_elementary_matrix(pivot, num1, row, col):
     temp_elementary = make_unit_matrix()
@@ -49,7 +49,8 @@ def gauss_method(matrix):
             if matrix[r][r] == 1:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
-                """print the multiply to a fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"""
+                """print the multiply to a file"""
+                """sddfvgbhnjmk,mjnhbgfvdfghjk,kjmnhbgfvvghjkl,kjhngb"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
             else:
                 temp_matrix = make_unit_matrix()
@@ -60,8 +61,6 @@ def gauss_method(matrix):
                 mul = multiply_two_matrix(temp_matrix, mul)
                 """print the multiply to a file"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
-
-
 
     for r in range(size-1, -1, -1):
         for c in range(r, -1, -1):
