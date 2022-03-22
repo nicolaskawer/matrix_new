@@ -19,7 +19,7 @@ def make_elementary_matrix(pivot, num1, row, col):
     temp_elementary = make_unit_matrix()
     temp_elementary[row][col] = -1 * (num1 / pivot)
     return temp_elementary
-
+"""hii hadar how u doing"""
 
 def exchange(row, row_replace):
     unit_matrix = temp_elementary = make_unit_matrix()
