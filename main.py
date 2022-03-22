@@ -2,7 +2,17 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+def make_unit_matrix():
+    unit_matrix = []
+    for i in range(0, size):
+        temp = []
+        for j in range(0, size):
+            if i == j:
+                temp.append(1)
+            else:
+                temp.append(0)
+        unit_matrix.append(temp)
+    return unit_matrix
 
 def make_elementary_matrix(pivot, num1, row, col):
     temp_elementary = make_unit_matrix()
