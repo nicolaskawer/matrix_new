@@ -50,7 +50,6 @@ def gauss_method(matrix):
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
                 """print the multiply to a file"""
-                """sddfvgbhnjmk,mjnhbgfvdfghjk,kjmnhbgfvvghjkl,kjhngb"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
             else:
                 temp_matrix = make_unit_matrix()
