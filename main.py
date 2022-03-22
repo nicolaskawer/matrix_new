@@ -48,7 +48,7 @@ def gauss_method(matrix):
             if matrix[r][r] == 1:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
-                """print the multiply to a file"""
+                """print the multiply to a fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
             else:
                 temp_matrix = make_unit_matrix()
