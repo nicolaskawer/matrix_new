@@ -60,6 +60,15 @@ def gauss_method(matrix):
                 mul = multiply_two_matrix(temp_matrix, mul)
                 """print the multiply to a file"""
                 matrix = multiply_two_matrix(temp_matrix, matrix)
+
+
+
+    for r in range(size-1, -1, -1):
+        for c in range(r, -1, -1):
+            temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
+            mul = multiply_two_matrix(temp_matrix, mul)
+            """print the multiply to a file"""
+            matrix = multiply_two_matrix(temp_matrix, matrix)
     return matrix
 
 
