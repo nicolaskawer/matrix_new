@@ -32,9 +32,9 @@ def gauss_method(matrix):
     for r in range(size):
         maxi = abs(matrix[r][r])
         flag = 0
-        for c in range(size):
-            if abs(matrix[r][c]) > maxi:
-                maxi = abs(matrix[r][c])
+        for c in range(r, size):
+            if abs(matrix[c][r]) > maxi:
+                maxi = abs(matrix[c][r])
                 flag = 1
                 c_max = c
         if flag != 0:
@@ -54,7 +54,7 @@ def gauss_method(matrix):
             else:
                 temp_matrix = make_unit_matrix()
                 if matrix[r][r] < 0:
-                    temp_matrix[r][r] = -1 / matrix[r][r]
+                    temp_matrix[r][r] = 1 / matrix[r][r]
                 else:
                     temp_matrix[r][r] = 1 / matrix[r][r]
                 mul = multiply_two_matrix(temp_matrix, mul)
