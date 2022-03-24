@@ -2,6 +2,7 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
 def make_unit_matrix():
     unit_matrix = []
     for i in range(0, size):
@@ -26,9 +27,10 @@ def exchange(row, row_replace):
     return temp_elementary
 
 
+
+
 def gauss_method(matrix):
     mul = make_unit_matrix()
-    """open a file"""
     for r in range(size):
         maxi = abs(matrix[r][r])
         flag = 0
@@ -40,17 +42,19 @@ def gauss_method(matrix):
         if flag != 0:
             temp_matrix = exchange(r, c_max)
             mul = multiply_two_matrix(temp_matrix, mul)
-            print(mul)
-            """print the multiply to a file"""
+            print(temp_matrix, end=" X ")
+            print(matrix, end="=")
             matrix = multiply_two_matrix(temp_matrix, matrix)
+            print(matrix)
     for r in range(size):
         for c in range(r, size):
             if matrix[r][r] == 1:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
-                """print the multiply to a file"""
-                print(mul)
+                print(temp_matrix, end=" X ")
+                print(matrix, end="=")
                 matrix = multiply_two_matrix(temp_matrix, matrix)
+                print(matrix)
             else:
                 temp_matrix = make_unit_matrix()
                 if matrix[r][r] < 0:
@@ -58,18 +62,19 @@ def gauss_method(matrix):
                 else:
                     temp_matrix[r][r] = 1 / matrix[r][r]
                 mul = multiply_two_matrix(temp_matrix, mul)
-                print(mul)
-                """print the multiply to a file"""
+                print(temp_matrix, end=" X ")
+                print(matrix, end="=")
                 matrix = multiply_two_matrix(temp_matrix, matrix)
-
+                print(matrix)
     for r in range(size-1, -1, -1):
         for c in range(r, -1, -1):
             if r != c:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
-                print(mul)
-                """print the multiply to a file"""
+                print(temp_matrix, end=" X ")
+                print(matrix, end="=")
                 matrix = multiply_two_matrix(temp_matrix, matrix)
+                print(matrix)
     return mul
 
 
