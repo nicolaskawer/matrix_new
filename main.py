@@ -2,6 +2,11 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def print_matrix(matrix_to_print):
+    str1 = ""
+    for n in range(len(matrix_to_print)):
+        str1 = str1 +"\n"+ str(matrix_to_print[n])
+    return str1
 
 def make_unit_matrix():
     unit_matrix = []
@@ -42,19 +47,19 @@ def gauss_method(matrix):
         if flag != 0:
             temp_matrix = exchange(r, c_max)
             mul = multiply_two_matrix(temp_matrix, mul)
-            print(temp_matrix, end=" X ")
-            print(matrix, end="=")
+            f1.writelines("-------------------------------------------------------")
+            f1.writelines(f'{print_matrix(temp_matrix)}\nX{print_matrix(matrix)}\n=')
             matrix = multiply_two_matrix(temp_matrix, matrix)
-            print(matrix)
+            f1.writelines(f'{print_matrix(matrix)}\n')
     for r in range(size):
         for c in range(r, size):
             if matrix[r][r] == 1:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
-                print(temp_matrix, end=" X ")
-                print(matrix, end="=")
+                f1.writelines("-------------------------------------------------------")
+                f1.writelines(f'{print_matrix(temp_matrix)}\nX{print_matrix(matrix)}\n=')
                 matrix = multiply_two_matrix(temp_matrix, matrix)
-                print(matrix)
+                f1.writelines(f'{print_matrix(matrix)}\n')
             else:
                 temp_matrix = make_unit_matrix()
                 if matrix[r][r] < 0:
@@ -62,19 +67,19 @@ def gauss_method(matrix):
                 else:
                     temp_matrix[r][r] = 1 / matrix[r][r]
                 mul = multiply_two_matrix(temp_matrix, mul)
-                print(temp_matrix, end=" X ")
-                print(matrix, end="=")
+                f1.writelines("-------------------------------------------------------")
+                f1.writelines(f'{print_matrix(temp_matrix)}\nX{print_matrix(matrix)}\n=')
                 matrix = multiply_two_matrix(temp_matrix, matrix)
-                print(matrix)
+                f1.writelines(f'{print_matrix(matrix)}\n')
     for r in range(size-1, -1, -1):
         for c in range(r, -1, -1):
             if r != c:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
-                print(temp_matrix, end=" X ")
-                print(matrix, end="=")
+                f1.writelines("-------------------------------------------------------")
+                f1.writelines(f'{print_matrix(temp_matrix)}\nX{print_matrix(matrix)}\n=')
                 matrix = multiply_two_matrix(temp_matrix, matrix)
-                print(matrix)
+                f1.writelines(f'{print_matrix(matrix)}\n')
     return mul
 
 
@@ -102,6 +107,8 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    f1 = open("file1.cvs", 'w')
+    f1.write(">>>Solution steps:>>>\n")
     matrix = []
     answer_matrix = []
     final_result = []
@@ -120,6 +127,12 @@ if __name__ == '__main__':
     for r in range(len(multiply_elementary_matrix)):
         for c in range(len(multiply_elementary_matrix)):
             final_result[r] += multiply_elementary_matrix[r][c] * answer_matrix[c]
-    print(final_result) #צריך להדפיס לאא בצורת מטריצה אלא בצורת משתנים X,Y,Z
+    f1.writelines("-------------------------------------------------------\n")
+    f1.writelines(f'\nThe results are:')
+    for n in range(len(final_result)):
+        f1.writelines(f'\nX{n+1}={final_result[n]}')
+    f1.close()
+    print("<<<TO WATCH THE RESULTS GO CHECK FILE NAMED: file1>>>")
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
