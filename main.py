@@ -53,7 +53,7 @@ def gauss_method(matrix):
             f1.writelines(f'{print_matrix(matrix)}\n')
     for r in range(size):
         for c in range(r, size):
-            if matrix[r][r] == 1:
+            if matrix[r][r] == 1 and r != c:
                 temp_matrix = make_elementary_matrix(matrix[r][r], matrix[c][r], c, r)
                 mul = multiply_two_matrix(temp_matrix, mul)
                 f1.writelines("-------------------------------------------------------")
